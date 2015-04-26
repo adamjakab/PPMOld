@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>PPM Configuration</title>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-theme/jquery-ui-1.10.1.custom.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/dataTables.css" />
+		<link rel="stylesheet" type="text/css" href="css/icons.css" />
+		<link rel="stylesheet" type="text/css" href="css/colors.css" />
+		<link rel="stylesheet" type="text/css" href="css/options.css" />
+
+		<script type="text/javascript" src="js/vendors/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/vendors/jquery-ui-1.10.1.custom.min.js"></script>
+        <script type="text/javascript" src="js/vendors/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="js/vendors/jquery.passwordMask.js"></script>
+        <script type="text/javascript" src="js/vendors/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="js/common_tools.js"></script>
+		<script type="text/javascript" src="js/options.js"></script>
+	</head>
+	<body>
+
+	<div id="content">
+		<ul>
+			<li><a href="#tab-passcards">Passcards</a></li>
+			<li><a href="#tab-servers">Servers</a></li>
+			<li><a href="#tab-options">Options</a></li>
+		</ul>
+
+		<div id="tab-passcards" class="optiontab">
+            <div class="dataholder"></div>
+		</div>
+
+		<div id="tab-servers" class="optiontab">
+			<h3 class="ui-widget-header">Paranoia server #0
+                <button style="float:right;" id="button_server_connection_config" class="button" >Connection settings</button>
+                <button style="float:right;" id="button_server_encryption_config" class="button" >Encryption settings</button>
+                <br class="clr" />
+            </h3>
+            <div class="serverlist">
+                <div id="ppm_server_0" class="server" ></div>
+            </div>
+
+		</div>
+
+		<div id="tab-options" class="optiontab">
+			<h3 class="ui-widget-header">Paranoia Configuration Options
+                <button style="float:right;" id="button_storage_options" class="button" >Configure Storage</button>
+                <br class="clr" />
+            </h3>
+
+
+			<label class="column" for="menu_width_nopc">Default Menu Width</label>
+			<input id="menu_width_nopc" type="number" class="ui-widget ui-state-active" />
+            <br />
+
+            <label class="column" for="menu_width_withpc">Menu Width with Passcards</label>
+            <input id="menu_width_withpc" type="number" class="ui-widget ui-state-active" />
+            <br />
+
+            <label class="column" for="pwgen_specialchars">Special characters for password generator</label>
+            <input id="pwgen_specialchars" type="text" class="ui-widget ui-state-active" />
+            <br />
+
+
+            <label class="column" for="passcard_default_username">Default username for new passcards</label>
+            <input id="passcard_default_username" type="text" class="ui-widget ui-state-active" />
+            <br />
+
+            <label class="column">Autofill password for new passcards</label>
+            <span id="passcard_autofill_password">
+                <input type="radio" id="pcaf_y" name="passcard_autofill_password" value="Y" /><label for="pcaf_y">Yes</label>
+                <input type="radio" id="pcaf_n" name="passcard_autofill_password" value="N" /><label for="pcaf_n">No</label>
+            </span>
+            <br />
+
+
+
+
+			<hr />
+            <div class="buttonbar">
+                <button id="button_options_save" class="button" >Save</button>
+                <button id="button_options_reset" class="button" >Reset</button>
+            </div>
+		</div>
+
+		<div id="msg">...</div>
+
+	</div>
+
+    <div id="modaldialog" title="">
+        <div class="dialogtext"></div>
+    </div>
+
+    <div id="hidden_panel_contents" class="panel">
+
+        <div class="modifyPasscard">
+
+
+            <div class="pcparams"></div>
+
+            <div class="pcdata">
+                <label class="column" for="pc_id">ID</label>
+                <input id="pc_id" type="text" readonly="readonly" class="ui-widget"/>
+
+                <label class="column" for="pc_name">Name</label>
+                <input id="pc_name" type="text" class="ui-widget ui-state-active" />
+
+                <label class="column" for="pc_identifier">Identifier</label>
+                <input id="pc_identifier" type="text" class="ui-widget ui-state-active" />
+
+                <label class="column" for="pc_username">Username</label>
+                <input id="pc_username" type="text" class="ui-widget ui-state-active" />
+
+                <label class="column" for="pc_password">Password</label>
+                <input id="pc_password" type="password" class="ui-widget ui-state-active" />
+            </div>
+
+
+        </div>
+
+        <div class="serverConfigOptions">
+            <div class="srvdata">
+                <label class="column" for="srv_0_name">Server Name</label>
+                <input id="srv_0_name" type="text" class="ui-widget ui-state-active" />
+
+                <label class="column" for="srv_0_type">Server Type</label>
+                <select id="srv_0_type" class="ui-widget ui-state-active">
+                    <option value="master">Master</option>
+                </select>
+
+                <label class="column" for="srv_0_url">Server Url</label>
+                <input id="srv_0_url" type="text" class="ui-widget ui-state-active" />
+
+                <label class="column" for="srv_0_ping_interval">Ping Interval</label>
+                <input id="srv_0_ping_interval" type="number" class="ui-widget ui-state-active" />
+
+                <label class="column" for="srv_0_username">Server Username</label>
+                <input id="srv_0_username" type="text" class="ui-widget ui-state-active" />
+
+                <label class="column" for="srv_0_password">Server Password</label>
+                <input id="srv_0_password" type="password" class="ui-widget ui-state-active" />
+
+            </div>
+        </div>
+
+        <div class="serverEncryptionOptions">
+            <div class="srvencrdata">
+                <label class="column" for="srv_0_encryption_scheme">Encryption Scheme</label>
+                <select id="srv_0_encryption_scheme" class="ui-widget ui-state-active" >
+                    <option value="PPM_ENCRYPTION_SCHEME_CLEARTEXT">ClearText</option>
+                    <option value="PPM_ENCRYPTION_SCHEME_SINGLEPASS">SinglePass</option>
+                    <option value="PPM_ENCRYPTION_SCHEME_CRISSCROSS">CrissCross</option>
+                    <option value="PPM_ENCRYPTION_SCHEME_AESMD5">AesMd5</option>
+                    <option value="PPM_ENCRYPTION_SCHEME_WORDBYWORD">WordByWord</option>
+                </select>
+
+                <label class="column" for="srv_0_master_key">Master Key</label>
+                <input id="srv_0_master_key" type="text" class="ui-widget ui-state-active" />
+            </div>
+        </div>
+
+
+        <div class="syncStorageOptions">
+            <p>Change the Encryption Scheme(ES) and the Master Key(MK) for your configuration encryption</p>
+            <label for="sync_option_es">Encryption Scheme(ES)</label>
+            <br/>
+            <select id="sync_option_es" class="ui-widget ui-state-active" size="5">
+                <option value="PPM_ENCRYPTION_SCHEME_CLEARTEXT">ClearText</option>
+                <option value="PPM_ENCRYPTION_SCHEME_SINGLEPASS">SinglePass</option>
+                <option value="PPM_ENCRYPTION_SCHEME_CRISSCROSS">CrissCross</option>
+                <option value="PPM_ENCRYPTION_SCHEME_AESMD5">AesMd5</option>
+                <option value="PPM_ENCRYPTION_SCHEME_WORDBYWORD">WordByWord</option>
+            </select>
+            <div id="sync_option_es_desc"></div>
+            <br><br>
+            <label for="sync_option_mk">Master Key(MK)</label>
+            <input id="sync_option_mk" class="ui-widget ui-state-active" type="password"/>
+            <hr/>
+            <label for="sync_config_test_output">Encryption Test</label>
+            <p id="sync_config_test_input">{item1: "Nem minden arany ami fénylik."}</p>
+            <div id="sync_config_test_output" class="ui-widget ui-state-active"></div>
+        </div>
+
+    </div>
+
+	</body>
+</html>

@@ -1,0 +1,77 @@
+body {
+    margin:0;
+    padding:0;
+	/*min-width: 125px;*/
+	/*overflow-x: hidden;*/
+    overflow: hidden;
+    width: 100%;
+    font-family: Helvetica, "Lucida Sans", "Times New Roman", monospace;
+    font-size:14px;
+}
+.panel{display:none;}
+.clr{clear:both;}
+
+h3.paneltitle{
+    margin:0px;
+    line-height: 40px;
+    text-indent: 40px;
+    text-align: left;
+    font-size: 14px;
+    background: transparent url(../images/paranoia_32.png) left center no-repeat;
+}
+
+/*------------------------------------------------LOGIN*/
+#panel_login{width:250px; padding:0 10px; margin:0 auto;}
+#panel_login label{display:block;margin-top:10px; color:#5f5f5f;font-size: 11px;}
+#panel_login input, #panel_login select, #panel_login button{width:250px;}
+#panel_login input#masterkey{width:230px;}
+#panel_login #button_login{margin:10px 0;}
+
+
+
+/*------------------------------------------------MENU*/
+#panel_menu{/*width:125px;*/ font-size:10px;}
+#panel_menu ul#menu{/*float:right;*/}
+#panel_menu .ui-menu { /*width: 120px;*/ }
+#panel_menu .ui-menu li{ position:relative; }
+
+#panel_menu .ui-menu .ui-menu-item.passcard{}
+#panel_menu .ui-menu .ui-menu-item.passcard a{padding-right: 40px; height:16px; overflow: hidden;}
+
+
+#panel_menu ul#menu span.pc-info{left:auto; right:0px;cursor:pointer;}
+#panel_menu ul#menu span.pc-copy-pw{left:auto; right:12px;cursor:pointer;}
+#panel_menu ul#menu span.pc-copy-un{left:auto; right:24px;cursor:pointer;}
+
+
+
+/*------------------------------------------------INTERNAL*/
+#panel_internal{width:250px; padding:0 10px; margin:0 auto;padding:0 10px;}
+#panel_internal #internal-panel-close-button{position:absolute; top:0px; right:0px;cursor: pointer;}
+#panel_internal h4{text-align:left;margin:2px 0; color:#444444;}
+
+.internal-panel{width:250px; margin-bottom:10px;}
+div.buttonbar{margin-top:10px;}
+div.hline{margin:5px 0; padding-bottom:5px; border-bottom: 1px solid #c5c5c5;}
+span.button{cursor: pointer;}
+
+/*-----------------------------------------------New Passcard*/
+.internal-panel.newPasscardPanel{width:100%; /*border:1px dotted #989898;*/}
+.newPasscardPanel label{display:block; margin-top: 10px; width:100px;color:#5f5f5f;font-size: 11px; font-weight: bold;}
+.newPasscardPanel input.ui-state-active{width:440px; padding:3px;font-weight: normal; font-size:13px;}
+.newPasscardPanel input#input_npc_password{width:420px;}
+
+/*-----------------------------------------------PWGEN*/
+div#pwlength-slider{width:50%; float:right; margin-right:0px;}
+#pwdchars.ui-buttonset{}
+#pwdchars.ui-buttonset label{color:#c5c5c5;}
+#pwdchars.ui-buttonset label.ui-state-active{color:#12c423;}
+#pwdchars.ui-buttonset label span{padding:10px 0px;width:61px;}
+textarea#genpwd{
+    height:80px;
+    width:245px;
+    font-size:12px;
+    font-weight: normal;
+    color:#b83400;
+    text-align: center;
+}

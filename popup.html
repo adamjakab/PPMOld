@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>PPM</title>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-theme/jquery-ui-1.10.1.custom.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/icons.css" />
+		<link rel="stylesheet" type="text/css" href="css/colors.css" />
+		<link rel="stylesheet" type="text/css" href="css/popup.css" />
+
+		<script type="text/javascript" src="js/vendors/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/vendors/jquery-ui-1.10.1.custom.min.js"></script>
+        <script type="text/javascript" src="js/vendors/jquery.passwordMask.js"></script>
+		<script type="text/javascript" src="js/common_tools.js"></script>
+		<script type="text/javascript" src="js/popup.js"></script>
+	</head>
+	<body class="ui-widget-content">
+		<div id="panel_login" class="panel">
+			<h3 class="paneltitle">Paranoia Password Manager</h3>
+
+            <label for="profilename">Profile</label>
+            <select id="profilename" class="ui-widget ui-state-active">
+                <option value="PPMCONFIG">Default</option>
+            </select>
+
+            <label for="encryptionscheme">Encryption Scheme</label>
+            <select id="encryptionscheme" class="ui-widget ui-state-active">
+                <option value="PPM_ENCRYPTION_SCHEME_AESMD5">AesMd5</option>
+                <option value="PPM_ENCRYPTION_SCHEME_CLEARTEXT">ClearText</option>
+                <option value="PPM_ENCRYPTION_SCHEME_CRISSCROSS">CrissCross</option>
+                <option value="PPM_ENCRYPTION_SCHEME_SINGLEPASS">SinglePass</option>
+                <option value="PPM_ENCRYPTION_SCHEME_WORDBYWORD">WordByWord</option>
+            </select>
+
+			<label for="masterkey">Master Key</label>
+			<input id="masterkey" type="password" class="ui-widget ui-state-active" value="" />
+
+			<button id="button_login">Decrypt profile</button>
+		</div>
+
+		<div id="panel_menu" class="panel">
+            <ul id="menu">
+                <li title="logout"><a href="#"><span class="ui-icon ui-icon-power"></span>Logout</a></li>
+                <li class="separator1"><hr/></li>
+                <!-- PASSCARDS HERE -->
+                <li class="separator2"><hr/></li>
+                <li title="newpasscard"><a href="#"><span class="ui-icon ui-icon-circle-plus"></span>New Passcard</a></li>
+                <li title="pwdgenerator"><a href="#"><span class="ui-icon ui-icon-script"></span>Pwd Generator</a></li>
+                <li title="configuration"><a href="#"><span class="ui-icon ui-icon-wrench"></span>Configuration</a></li>
+                <li title="information"><a href="#"><span class="ui-icon ui-icon-help"></span>Info</a></li>
+            </ul>
+            <div class="clr"></div>
+		</div>
+
+        <div id="panel_internal" class="panel"></div>
+
+
+        <div id="hidden_panel_contents" class="panel">
+
+            <div id="logoutPanel">
+                <div class="internal-panel">
+                    <h3 class="paneltitle">Close Paranoia Session</h3>
+                    <div class="hline"></div>
+                    <div class="buttonbar">
+                        <button id="button_logout" class="button">Logout</button>
+                        <button id="button_logout_cancel" class="button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="infoPanel">
+                <div class="internal-panel">
+                    <h3 class="paneltitle">Paranoia Password Manager</h3>
+                    <div class="hline">
+                        <p>Password manager for the paranoid.</p>
+                        <p><a href="http://paranoia.alfazeta.com" target="_blank">PPM Support Site</a> </p>
+                    </div>
+                    <div class="buttonbar">
+                        <button id="button_info_close" class="button">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pwdGenPanel">
+                <div class="internal-panel">
+                    <h3 class="paneltitle">Password Generator</h3>
+                    <div class="hline">
+                        <label>Length: <span id="pwlength" /></label>
+                        <div id="pwlength-slider" title="Slide to change password length"></div>
+                    </div>
+
+                    <div id="pwdchars" class="hline">
+                        <input type="checkbox" id="pwdchars_alpha_lower" /><label for="pwdchars_alpha_lower" title="Lowercase letters">a-z</label>
+                        <input type="checkbox" id="pwdchars_alpha_upper" /><label for="pwdchars_alpha_upper" title="Uppercase letters">A-Z</label>
+                        <input type="checkbox" id="pwdchars_numeric" /><label for="pwdchars_numeric" title="Numbers">0-9</label>
+                        <input type="checkbox" id="pwdchars_special" /><label for="pwdchars_special" title="Special characters">#&@</label>
+                    </div>
+
+                    <div class="hline">
+                        <textarea id="genpwd" class="ui-widget ui-state-active" readonly="readonly"></textarea>
+                    </div>
+                    <div class="buttonbar">
+                        <button id="button_pwgen" class="button">Generate</button>
+                        <button id="button_pwgen_cancel" class="button">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="newPasscardPanel">
+                <div class="internal-panel newPasscardPanel">
+                    <h3 class="paneltitle">Register New Passcard</h3>
+                    <div class="data-panel hline">
+                        <label for="input_npc_name">Name</label>
+                        <input type="text" id="input_npc_name" value="" placeholder="Name" class="ui-widget ui-state-active"/>
+                        <br />
+                        <label for="input_npc_url">Identifier</label>
+                        <input type="text" id="input_npc_url" value="" placeholder="Identifier/Url" class="ui-widget ui-state-active"/>
+                        <br />
+                        <label for="input_npc_username">Username</label>
+                        <input type="text" id="input_npc_username" value="" placeholder="Username" class="ui-widget ui-state-active"/>
+                        <br />
+                        <label for="input_npc_password">Password</label>
+                        <input type="password" id="input_npc_password" value="" placeholder="Password" class="ui-widget ui-state-active"/>
+                        <br />
+                    </div>
+                    <div class="buttonbar">
+                        <button id="button_npc_save" class="button">Save</button>
+                        <button id="button_npc_cancel" class="button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="passcardInfoPanel">
+                <div class="internal-panel">
+                    <h3 class="paneltitle">Passcard Info</h3>
+                    <div class="passcard_details hline"></div>
+                    <div class="buttonbar">
+                        <button id="button_pcpanel_close" class="button">Close</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+	</body>
+</html>
